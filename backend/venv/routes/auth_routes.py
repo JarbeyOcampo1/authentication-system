@@ -45,6 +45,9 @@ def login():
         "rol": user["rol"]
     })
 
+    
     return {"token": token, "rol": user["rol"]}
+
+
 
 

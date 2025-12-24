@@ -11,7 +11,7 @@ export default function Register() {
   async function handleSubmit(e) {
     e.preventDefault();
     await register(nombre, email, password);
-    navigate("/");
+    navigate("/login");
   }
 
   return (

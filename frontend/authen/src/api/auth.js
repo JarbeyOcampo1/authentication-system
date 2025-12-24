@@ -7,7 +7,14 @@ export async function login(email, password) {
     body: JSON.stringify({ email, password })
   });
 
-  return res.json();
+  const data = await res.json();
+
+  // 🔥 CLAVE: manejar error HTTP
+  if (!res.ok) {
+    throw new Error(data.error || "Error en login");
+  }
+
+  return data;
 }
 
 export async function register(nombre, email, password) {
@@ -17,5 +24,11 @@ export async function register(nombre, email, password) {
     body: JSON.stringify({ nombre, email, password })
   });
 
-  return res.json();
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.error || "Error en registro");
+  }
+
+  return data;
 }
